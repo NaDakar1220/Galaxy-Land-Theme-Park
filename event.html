@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galaxy Land - Events</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff;
+  transition: background-color 0.4s ease;
+}
+
+body.night {
+  background-color: #0d0b21;
+  color: #eaeaea;
+}
+
+
+.events {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.events h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #4bc0f1;
+}
+
+.event-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.event {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.event:hover {
+  transform: translateY(-5px);
+}
+
+.event h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.event p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background-color: #4bc0f1;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2f9ecf;
+}
+
+
+body.night .event {
+  background-color: rgba(30, 30, 60, 0.9);
+  color: #e0e0ff;
+}
+
+body.night .event h3 {
+  color: #9fc9ff;
+}
+
+body.night .events h2 {
+  color: #ffffff;
+}
+
+body.night .btn {
+  background-color: #6aa8ff;
+  color: #000;
+}
+
+body.night .btn:hover {
+  background-color: #88c2ff;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="banner">
+    <img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+  </div>
+
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+    </label>
+    <div id="clock">Current Time:</div>
+  </div>
+
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+      </div>
+
+      
+      <div class="background" id="background">
+       
+        <div class="balloon balloon1"></div>
+        <div class="balloon balloon2"></div>
+        <div class="balloon balloon3"></div>
+
+        
+        <div class="planet planet1"></div>
+        <div class="planet planet2"></div>
+        <div class="planet planet3"></div>
+      </div>
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <section class="events">
+        <h2>Upcoming Events at Galaxy Land</h2>
+        <div class="event-grid">
+          <article class="event">
+            <h3>🛸 Alien Encounter Weekend</h3>
+            <p>Join us for an out-of-this-world character meet-and-greet! Perfect for families and sci-fi fans. Photo ops, shows, and surprises await.</p>
+            <p><strong>Date:</strong> June 15–16</p>
+            <a href="form.html" class="btn">Book Now</a>
+          </article>
+
+          <article class="event">
+            <h3>🎆 Galactic Light Show</h3>
+            <p>A dazzling night-time display of lasers, fireworks, and music set to a cosmic soundtrack. Don’t miss our biggest show of the summer!</p>
+            <p><strong>Date:</strong> Every Saturday in July</p>
+            <a href="form.html" class="btn">Book Now</a>
+          </article>
+
+          <article class="event">
+            <h3>🚀 Space Explorer Kids Day</h3>
+            <p>Interactive science demos, hands-on crafts, and mini rides just for our little astronauts!</p>
+            <p><strong>Date:</strong> August 3</p>
+            <a href="form.html" class="btn">Book Now</a>
+          </article>
+
+          <article class="event">
+            <h3>👽 Sci-Fi Movie Nights</h3>
+            <p>Enjoy cult classics and new favorites under the stars. Bring a blanket, grab some popcorn, and enjoy an outdoor cinema experience!</p>
+            <p><strong>Date:</strong> Fridays in August</p>
+            <a href="form.html" class="btn">Book Now</a>
+          </article>
+
+          <article class="event">
+            <h3>🌌 Cosmic Costume Parade</h3>
+            <p>Dress as your favorite space hero, alien, or astronaut and take part in our intergalactic parade with prizes for best dressed!</p>
+            <p><strong>Date:</strong> September 7</p>
+            <a href="form.html" class="btn">Book Now</a>
+          </article>
+
+          <article class="event">
+            <h3>🛰️ Robot Festival</h3>
+            <p>Live robot shows, interactive workshops, and meet our Galaxy Bots in person. A weekend of tech, fun, and futuristic surprises!</p>
+            <p><strong>Date:</strong> October 12–13</p>
+            <a href="form.html" class="btn">Book Now</a>
+
+          </article>
+        </div>
+      </section>
+
+      <div id="footer">
+        <p>&copy; Copyright Nadak</p>
+      </div>
+    </div>
+  </div>
+
+  
+  <script>
+    const clock = document.getElementById('clock');
+    const themeSwitch = document.getElementById('themeSwitch');
+    const balloons = document.querySelectorAll('.balloon');
+    const planets = document.querySelectorAll('.planet');
+    const background = document.getElementById('background');
+
+    function addStars() {
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        background.appendChild(star);
+      }
+    }
+
+    function removeStars() {
+      document.querySelectorAll('.star').forEach(star => star.remove());
+    }
+
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    }
+
+    function applyTheme(isNight) {
+      if (isNight) {
+        document.body.classList.remove('day');
+        document.body.classList.add('night');
+        balloons.forEach(b => b.style.display = 'none');
+        planets.forEach(p => p.style.display = 'block');
+        addStars();
+      } else {
+        document.body.classList.remove('night');
+        document.body.classList.add('day');
+        balloons.forEach(b => b.style.display = 'block');
+        planets.forEach(p => p.style.display = 'none');
+        removeStars();
+      }
+    }
+
+    const hour = new Date().getHours();
+    const isNightInitial = hour < 6 || hour >= 18;
+    themeSwitch.checked = isNightInitial;
+    applyTheme(isNightInitial);
+
+    themeSwitch.addEventListener('change', () => {
+      applyTheme(themeSwitch.checked);
+    });
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

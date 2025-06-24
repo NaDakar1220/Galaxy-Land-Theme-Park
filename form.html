@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Your Visit - Galaxy Land</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 40px;
+      background: #f2f2f2;
+    }
+
+    .logo {
+  position: fixed;
+  top: 5px;
+  left: 10px;
+  z-index: 999;
+
+}
+
+.logo img {
+  height: 200px;
+  width: 200px;
+}
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .counter button {
+      width: 35px;
+      padding: 0;
+    }
+
+    .counter input {
+      text-align: center;
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="images/land2.PNG" alt="Galaxy Land Logo">
+  </div>
+
+  <div class="form-container">
+    <h2>Book Your Galaxy Land Visit</h2>
+    <form action="process_payment.php" method="post" id="bookingForm">
+
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="ticket-type">Ticket Type:</label>
+      <select id="ticket-type" name="ticket-type" required>
+        <option value="General Admission">General Admission</option>
+        <option value="VIP Pass">VIP Pass</option>
+        <option value="Family Package">Family Package</option>
+        <option value="Evening Entry">Evening Entry</option>
+        <option value="Annual Pass">Annual Pass</option>
+        <option value="Student Discount">Student Discount</option>
+      </select>
+
+      <label for="check-in">Check-in Date:</label>
+      <input type="date" id="check-in" name="check-in" required>
+
+      <label for="check-out">Check-out Date:</label>
+      <input type="date" id="check-out" name="check-out" required>
+
+      <label>Number of Adults:</label>
+      <div class="counter">
+        <button type="button" onclick="changeCount('adults', -1)">−</button>
+        <input type="number" id="adults" name="adults" value="0" min="0" readonly>
+        <button type="button" onclick="changeCount('adults', 1)">+</button>
+      </div>
+
+      <label>Number of Children:</label>
+      <div class="counter">
+        <button type="button" onclick="changeCount('children', -1)">−</button>
+        <input type="number" id="children" name="children" value="0" min="0" readonly>
+        <button type="button" onclick="changeCount('children', 1)">+</button>
+      </div>
+
+      <h3>Payment Details</h3>
+
+      <label for="card-name">Cardholder Name:</label>
+      <input type="text" id="card-name" name="card-name" required>
+
+      <label for="card-number">Card Number:</label>
+      <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" required>
+
+     <div style="display: flex; gap: 15px;">
+     <div style="flex: 1;">
+     <label for="expiry">Expiry Date (MM/YY):</label>
+     <input type="text" id="expiry" name="expiry" placeholder="MM/YY" required>
+     </div>
+
+     <div style="flex: 1;">
+     <label for="cvv">CVV:</label>
+     <input type="text" id="cvv" name="cvv" placeholder="123" required>
+     </div>
+</div>
+
+
+      <button type="submit">Confirm Booking</button>
+    </form>
+  </div>
+
+  <script>
+    function changeCount(id, delta) {
+      const input = document.getElementById(id);
+      const value = parseInt(input.value) || 0;
+      const newValue = value + delta;
+      if (newValue >= 0) {
+        input.value = newValue;
+      }
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for booking your visit to Galaxy Land!');
+      this.reset();
+    });
+  </script>
+
+</body>
+</html>

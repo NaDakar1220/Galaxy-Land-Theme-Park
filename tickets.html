@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galaxy land</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+	
+	<div class="banner">
+	<img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+	</div>
+
+
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+    </label>
+	<div id="clock">Current Time:</div>
+  </div>
+
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+        
+      </div>
+	  
+  
+  <div class="background" id="background">
+    
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+  </div>
+
+
+      
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="ticket-grid">
+        <div class="ticket-card" data-ticket="General Admission">
+          <h3>General Admission</h3>
+          <p>Access to all rides and shows. Valid all day.</p>
+          <strong>£39.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+        <div class="ticket-card" data-ticket="VIP Pass">
+          <h3>VIP Pass</h3>
+          <p>Skip the lines and get exclusive perks!</p>
+          <strong>£79.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+        <div class="ticket-card" data-ticket="Family Package">
+          <h3>Family Package</h3>
+          <p>4 tickets + meal vouchers included!</p>
+          <strong>£129.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+        <div class="ticket-card" data-ticket="Evening Entry">
+          <h3>Evening Entry</h3>
+          <p>Entry after 5 PM with limited access.</p>
+          <strong>£19.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+        <div class="ticket-card" data-ticket="Annual Pass">
+          <h3>Annual Pass</h3>
+          <p>Unlimited visits all year long!</p>
+          <strong>£199.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+        <div class="ticket-card" data-ticket="Student Discount">
+          <h3>Student Discount</h3>
+          <p>Show your student ID and save!</p>
+          <strong>£29.99</strong>
+          <a href="form.html" class="btn">Book Now</a>
+        </div>
+      </section>
+    
+      
+    
+      
+      <section id="hours">
+        <h2>Opening Hours</h2>
+        <ul class="hours-list">
+          <li><strong>Monday - Thursday:</strong> 10:00 AM – 8:00 PM</li>
+          <li><strong>Friday:</strong> 10:00 AM – 10:00 PM</li>
+          <li><strong>Saturday:</strong> 9:00 AM – 11:00 PM</li>
+          <li><strong>Sunday:</strong> 9:00 AM – 9:00 PM</li>
+        </ul>
+      </section>
+      <div id="feature">
+        <p>If you're looking for a specific event visite the next page "Events"</p>
+      </div>
+
+    <div id="footer">
+      <p>&copy; Copyright Nadak</p>
+    </div>
+  </div>
+
+  
+  <script>
+    const clock = document.getElementById('clock');
+    const themeSwitch = document.getElementById('themeSwitch');
+    const balloons = document.querySelectorAll('.balloon');
+    const planets = document.querySelectorAll('.planet');
+    const background = document.getElementById('background');
+
+    
+    function addStars() {
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        background.appendChild(star);
+      }
+    }
+
+   
+    function removeStars() {
+      document.querySelectorAll('.star').forEach(star => star.remove());
+    }
+
+    
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    }
+
+    
+    function applyTheme(isNight) {
+      if (isNight) {
+        document.body.classList.remove('day');
+        document.body.classList.add('night');
+        balloons.forEach(b => b.style.display = 'none');
+        planets.forEach(p => p.style.display = 'block');
+        addStars();
+      } else {
+        document.body.classList.remove('night');
+        document.body.classList.add('day');
+        balloons.forEach(b => b.style.display = 'block');
+        planets.forEach(p => p.style.display = 'none');
+        removeStars();
+      }
+    }
+
+    const hour = new Date().getHours();
+    const isNightInitial = hour < 6 || hour >= 18;
+    themeSwitch.checked = isNightInitial;
+    applyTheme(isNightInitial);
+
+    
+    themeSwitch.addEventListener('change', () => {
+      applyTheme(themeSwitch.checked);
+    });
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    document.querySelectorAll('.ticket-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const selected = card.getAttribute('data-ticket');
+        document.getElementById('ticket-type').value = selected;
+        document.getElementById('payment-form').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    
+    document.getElementById('ticketForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Thank you for your purchase!");
+      this.reset();
+    });
+
+    function changeCount(id, delta) {
+     const input = document.getElementById(id);
+     const current = parseInt(input.value);
+     if (current + delta >= 0) {
+       input.value = current + delta;
+  }
+}
+
+
+  </script>
+</body>
+</html>

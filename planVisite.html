@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plan Your Visit | Galaxy Land</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="banner">
+        <img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+    </div>
+
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+    </label>
+    <div id="clock">Current Time:</div>
+  </div>
+  
+ 
+
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+        
+      </div>
+	  
+  
+  <div class="background" id="background">
+   
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+  </div>
+
+
+      
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+  
+  <main class="visit-container">
+    <h1 style="color: white; text-align: center;">🪐 Plan Your Visit to Galaxy Land</h1>
+
+    
+    <section class="info-bar">
+      <div class="weather">
+        <strong>Current Weather:</strong> ☀️ 24°C, Clear skies
+      </div>
+      <div class="language">
+        <label for="language">🌐 Language:</label>
+        <select id="language">
+          <option>English</option>
+          <option>العربية</option>
+          <option>Français</option>
+        </select>
+      </div>
+    </section>
+
+    
+    <section class="map-section">
+      <h2 style="color: white;">📍 Park Location</h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39936.30206677188!2d0.1442518445822822!3d51.273971567091564!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8ad4c5d5bdfc1%3A0x2c9c51426386fe62!2sSevenoaks!5e0!3m2!1sen!2suk!4v1747569143323!5m2!1sen!2suk"
+       width="800"
+       height="600"
+       style="border:0;"
+       allowfullscreen=""
+       loading="lazy"
+       referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </section>
+
+    
+    <section>
+      <h2 style="color: white;">🚗 Getting to Galaxy Land</h2>
+      <p style="color: white;"><strong>By Car:</strong> Take Highway 88 and exit at Star Avenue. Parking is free and located near the entrance.</p>
+      <p style="color: white;"><strong>By Metro:</strong> Take the Purple Line to Galaxy Station. A shuttle bus runs every 10 minutes.</p>
+      <p style="color: white;"><strong>By Bus:</strong> Routes 11, 25, and 42 stop directly at the park gate.</p>
+    </section>
+
+    
+    <section>
+      <h2 style="color: white;">🎒 Things to Bring</h2>
+      <ul class="checklist">
+        <li>✅ Comfortable walking shoes</li>
+        <li>✅ Sunscreen and hat</li>
+        <li>✅ ID for ticket verification</li>
+        <li>✅ Water bottle</li>
+        <li>✅ Phone or camera for memories</li>
+        <li>✅ Printed or digital ticket</li>
+      </ul>
+    </section>
+
+    
+    <section>
+      <h3 style="color: white;">📘 Visitor Guide</h3>
+      <p style="color: white;">
+        Download our full visitor guide including maps, safety tips, accessibility info, and attraction highlights.
+      </p>
+      <a href="🌌 Galaxy Land Visitor Guide2.pdf" download class="download-btn">Download Guide (PDF)</a>
+    </section>
+
+   
+    <section class="faq">
+      <h2 style="color: white;">❓ Frequently Asked Questions</h2>
+      <details>
+        <summary>Can I bring my own food?</summary>
+        <p>Outside food is not allowed, but exceptions are made for medical or allergy-related needs.</p>
+      </details>
+      <details>
+        <summary>Is there a discount for groups or schools?</summary>
+        <p>Yes! Please contact our group sales team at groups@galaxyland.com.</p>
+      </details>
+      <details>
+        <summary>Is Galaxy Land wheelchair accessible?</summary>
+        <p>Yes, most attractions are accessible and rentals are available near the entrance.</p>
+      </details>
+      <details>
+        <summary>Are pets allowed in the park?</summary>
+        <p>No pets are allowed, except service animals with appropriate identification.</p>
+      </details>
+    </section>
+  </main>
+
+  <div id="footer">
+    <p>&copy; Copyright Nadak</p>
+  </div>
+</div>
+
+
+<script>
+  const clock = document.getElementById('clock');
+  const themeSwitch = document.getElementById('themeSwitch');
+  const balloons = document.querySelectorAll('.balloon');
+  const planets = document.querySelectorAll('.planet');
+  const background = document.getElementById('background');
+
+  
+  function addStars() {
+    for (let i = 0; i < 80; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      background.appendChild(star);
+    }
+  }
+
+  
+  function removeStars() {
+    document.querySelectorAll('.star').forEach(star => star.remove());
+  }
+
+  
+  function updateClock() {
+    const now = new Date();
+    clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+  }
+
+  
+  function applyTheme(isNight) {
+    if (isNight) {
+      document.body.classList.remove('day');
+      document.body.classList.add('night');
+      balloons.forEach(b => b.style.display = 'none');
+      planets.forEach(p => p.style.display = 'block');
+      addStars();
+    } else {
+      document.body.classList.remove('night');
+      document.body.classList.add('day');
+      balloons.forEach(b => b.style.display = 'block');
+      planets.forEach(p => p.style.display = 'none');
+      removeStars();
+    }
+  }
+
+  
+  const hour = new Date().getHours();
+  const isNightInitial = hour < 6 || hour >= 18;
+  themeSwitch.checked = isNightInitial;
+  applyTheme(isNightInitial);
+
+  
+  themeSwitch.addEventListener('change', () => {
+    applyTheme(themeSwitch.checked);
+  });
+
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  
+  const languageSelect = document.getElementById('languageSelect');
+  const selectedLang = document.getElementById('selectedLang');
+
+  languageSelect.addEventListener('change', function () {
+    const selected = languageSelect.options[languageSelect.selectedIndex].text;
+    selectedLang.textContent = `You selected: ${selected}`;
+  });
+
+
+</script>
+</body>
+</html>

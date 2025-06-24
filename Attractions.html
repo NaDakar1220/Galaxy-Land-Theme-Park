@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galaxy land</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+	
+	<div class="banner">
+	<img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+	</div>
+
+
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+    </label>
+	<div id="clock">Current Time:</div>
+  </div>
+
+<div id="page">
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+      </div>
+	  
+  
+  <div class="background" id="background">
+    
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+  </div>
+
+
+      
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <section class="Attractions">
+        <h2>Our Rides</h2>
+        <div class="ride-grid">
+        
+        <article>
+          <img src="images/roller.jpg" alt="Galactic Spiral">
+          <h3>Galactic Spiral</h3>
+          <p>Blast off on a space coaster through glowing tunnels and corkscrews!</p>
+        </article>
+
+            
+        <article>
+          <img src="images/drop.png" alt="Meteor Drop">
+          <h3>Meteor Drop</h3>
+          <p>Experience a 50-meter free fall with a countdown and space views.</p>
+        </article>
+
+                   
+        <article>
+          <img src="images/alien.jpg" alt="Alien Twister">
+          <h3>Alien Twister</h3>
+          <p>Spin at cosmic speed in an alien vortex—fast, dizzy, fun!</p>
+        </article>
+            
+        <article>
+          <img src="images/nebula races.jpg" alt="Nebula Racers">
+          <h3>Nebula Racers</h3>
+          <p>Compete in a galactic race through neon tracks and asteroid fields.</p>
+        </article>
+
+            
+        <article>
+          <img src="images/Zero-G Zone.jpg" alt="Zero-G Zone">
+          <h3>Zero-G Zone</h3>
+          <p>Float and flip in this anti-gravity simulator like you're in orbit!</p>
+        </article>
+
+          
+        <article>
+          <img src="images/comet.jpg" alt="Comet Cruiser">
+          <h3>Comet Cruiser</h3>
+          <p>A smooth, high-speed coaster gliding past simulated comets and stars.</p>
+        </article>
+
+        <article>
+          <img src="images/Ferris wheel .jpg" alt="Celestial Wheel">
+          <h3>Celestial Wheel</h3>
+          <p>Scenic sky-high views in glowing star pods above Galaxy Land.</p>
+        </article>
+      </div>
+
+      <h2>Shops & Restaurants</h2>
+      <div class="ride-grid">
+
+             
+          <article>
+            <img src="images/star mart.jpg" alt="Star Mart">
+            <h3>Star Mart</h3>
+            <p>Souvenirs, plushies, glow gear, and all your Galaxy Land gifts!</p>
+          </article>
+
+                      
+          <article>
+            <img src="images/cosmic cafe.jpg" alt="Cosmic Café">
+            <h3>Cosmic Café</h3>
+            <p>Grab burgers, wraps, and snacks while watching starships fly overhead.</p>
+          </article>
+
+                                                                    
+          <article>
+            <img src="images/Lunar Bites .jpg" alt="Lunar Bites">
+            <h3>Lunar Bites</h3>
+            <p>Galaxy-themed desserts, moon-milkshakes, and astronaut ice cream.</p>
+        </article>
+
+      </div>
+      
+    <div id="footer">
+      <p>&copy; Copyright Nadak</p>
+    </div>
+  </div>
+
+ 
+  <script>
+    const clock = document.getElementById('clock');
+    const themeSwitch = document.getElementById('themeSwitch');
+    const balloons = document.querySelectorAll('.balloon');
+    const planets = document.querySelectorAll('.planet');
+    const background = document.getElementById('background');
+
+    
+    function addStars() {
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        background.appendChild(star);
+      }
+    }
+
+   
+    function removeStars() {
+      document.querySelectorAll('.star').forEach(star => star.remove());
+    }
+
+    
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    }
+
+    
+    function applyTheme(isNight) {
+      if (isNight) {
+        document.body.classList.remove('day');
+        document.body.classList.add('night');
+        balloons.forEach(b => b.style.display = 'none');
+        planets.forEach(p => p.style.display = 'block');
+        addStars();
+      } else {
+        document.body.classList.remove('night');
+        document.body.classList.add('day');
+        balloons.forEach(b => b.style.display = 'block');
+        planets.forEach(p => p.style.display = 'none');
+        removeStars();
+      }
+    }
+
+   
+    const hour = new Date().getHours();
+    const isNightInitial = hour < 6 || hour >= 18;
+    themeSwitch.checked = isNightInitial;
+    applyTheme(isNightInitial);
+
+   
+    themeSwitch.addEventListener('change', () => {
+      applyTheme(themeSwitch.checked);
+    });
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>

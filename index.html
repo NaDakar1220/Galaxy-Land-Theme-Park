@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galaxy land</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	
+	<div class="banner">
+	<img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+	</div>
+
+
+  
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+   </label>
+	<div id="clock">Current Time:</div>
+  </div>
+
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+        
+      </div>
+	  
+  
+  <div class="background" id="background">
+    
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+  </div>
+
+
+      
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="feature">
+        <p>Welcome to Galaxy land!, where adventure meets cosmos, This park has many rides and attractions to make your day happy, please feel free to explore around the website for cheerful, excitement and joyful Experiences </p>
+      </div>
+        <section class="Attractions">
+          
+          <div class="ride-grid">
+          
+          <article>
+            <img src="images/ride.png" alt="rides">
+            <h3>Rides & Attractions</h3>
+            <p>Our theme park offer wild range of rides and attraction areas.</p>
+          </article>
+  
+              
+          <article>
+            <img src="images/offer.png" alt="offers">
+            <h3>Special Offers</h3>
+            <p>Special offers are always available every month.</p>
+          </article>
+  
+                     
+          <article>
+            <img src="images/services.png" alt="service">
+            <h3>Guest Services</h3>
+            <p>Our services provide you the best experience at park to make you feel comfortable and happy at all time!</p>
+          </article>
+      </div>
+
+    <div id="footer">
+      <p>&copy; Copyright Nadak</p>
+    </div>
+  </div>
+
+  
+  <script>
+	
+	window.onload = function() {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = 0;
+    overlay.style.left = 0;
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = 9999;
+
+    // Create alert box
+    const box = document.createElement('div');
+    box.style.background = '#fff8e1';
+    box.style.padding = '20px 30px';
+    box.style.borderRadius = '12px';
+    box.style.boxShadow = '0 8px 20px rgba(0,0,0,0.3)';
+    box.style.textAlign = 'center';
+    box.style.maxWidth = '400px';
+    box.style.fontFamily = 'Arial, sans-serif';
+
+    // Title
+    const title = document.createElement('h2');
+    title.textContent = '⚠️ Test Website';
+    title.style.color = '#ff9800';
+    title.style.marginTop = '0';
+
+    // Message
+    const msg = document.createElement('p');
+    msg.innerHTML = 'This website is for <strong>testing purposes only</strong> and is not intended for public use.';
+
+    // Button
+    const btn = document.createElement('button');
+    btn.textContent = 'Got it';
+    btn.style.marginTop = '15px';
+    btn.style.padding = '10px 20px';
+    btn.style.border = 'none';
+    btn.style.borderRadius = '6px';
+    btn.style.backgroundColor = '#ff9800';
+    btn.style.color = '#fff';
+    btn.style.cursor = 'pointer';
+    btn.onclick = () => document.body.removeChild(overlay);
+
+    // Hover effect
+    btn.onmouseover = () => btn.style.backgroundColor = '#fb8c00';
+    btn.onmouseout = () => btn.style.backgroundColor = '#ff9800';
+
+    // Assemble box
+    box.appendChild(title);
+    box.appendChild(msg);
+    box.appendChild(btn);
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+  };
+
+    
+    function addStars() {
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        background.appendChild(star);
+      }
+    }
+
+    
+    function removeStars() {
+      document.querySelectorAll('.star').forEach(star => star.remove());
+    }
+
+    
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    }
+
+   
+    function applyTheme(isNight) {
+      if (isNight) {
+        document.body.classList.remove('day');
+        document.body.classList.add('night');
+        balloons.forEach(b => b.style.display = 'none');
+        planets.forEach(p => p.style.display = 'block');
+        addStars();
+      } else {
+        document.body.classList.remove('night');
+        document.body.classList.add('day');
+        balloons.forEach(b => b.style.display = 'block');
+        planets.forEach(p => p.style.display = 'none');
+        removeStars();
+      }
+    }
+
+    
+    const hour = new Date().getHours();
+    const isNightInitial = hour < 6 || hour >= 18;
+    themeSwitch.checked = isNightInitial;
+    applyTheme(isNightInitial);
+
+   
+    themeSwitch.addEventListener('change', () => {
+      applyTheme(themeSwitch.checked);
+    });
+
+    setInterval(updateClock, 1000);
+    updateClock();
+	
+	
+  </script>
+</body>
+</html>

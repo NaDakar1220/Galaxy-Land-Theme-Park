@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Galaxy land</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+	
+	<div class="banner">
+	<img src="images/banner.png" alt="Galaxy land Theme Park Banner">
+	</div>
+
+
+ 
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="themeSwitch">
+      🌙 Night Mode
+   </label>
+	<div id="clock">Current Time:</div>
+  </div>
+
+  <div id="container">
+    <div id="header">
+      <div class="logo">
+        <img src="images/land2.PNG" alt="galaxy land logo">
+        
+      </div>
+	  
+ 
+  <div class="background" id="background">
+    <!-- Balloons (Day) -->
+    <div class="balloon balloon1"></div>
+    <div class="balloon balloon2"></div>
+    <div class="balloon balloon3"></div>
+
+    
+    <div class="planet planet1"></div>
+    <div class="planet planet2"></div>
+    <div class="planet planet3"></div>
+  </div>
+
+
+      
+
+      <div id="nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="Attractions.html">Attractions</a></li>
+          <li><a href="tickets.html">Tickets and Hours</a></li>
+          <li><a href="planVisite.html">Plan Your Visit</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="event.html">Events</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="feature">
+        <p>
+
+          <h2>🌌 Welcome to Galaxy Land – Where the Universe Comes to Life!</h2><br/>
+            Step into a world beyond your wildest imagination. **Galaxy Land** is not just a theme park – it's an interstellar adventure for thrill-seekers, dreamers, and families alike. From gravity-defying roller coasters to immersive space-themed attractions, we bring the wonders of the cosmos down to Earth.<br/>
+            <h2>🚀 Our Mission</h2><br/>
+            At Galaxy Land, our mission is to ignite curiosity, spark adventure, and create unforgettable experiences for visitors of all ages. We believe in the magic of discovery, the thrill of exploration, and the joy of shared moments.<br/>
+          <h2>🌠 What Awaits You</h2><br/>
+            Epic Rides & Attractions: Travel through wormholes, race through asteroid fields, and experience zero-gravity thrills on rides like *Star Chaser*, *Nebula Falls*, and *Black Hole Blitz*.
+            Cosmic Cuisine: From alien-inspired snacks to galaxy-themed treats, our restaurants and food stalls serve up flavors that are truly out of this world.
+            Live Shows & Entertainment: Watch spectacular light shows, meet cosmic characters, and enjoy interactive experiences the whole family will love.
+            Kid-Friendly Zones: Our littlest astronauts can explore safely in specially designed areas packed with mini-adventures and playful surprises.<br/>
+            
+           <h2>🌍 A Park for Everyone</h2><br/>
+            Whether you're a sci-fi fan, a roller coaster junkie, or just looking for a magical day with your loved ones, Galaxy Land offers something for everyone. Our team is dedicated to ensuring a safe, welcoming, and unforgettable experience from the moment you arrive.<br/>
+            
+            <h2>✨ Join the Journey</h2><br/>
+            Your space adventure begins here. Come make memories, defy gravity, and discover new worlds — only at **Galaxy Land**.<br/>
+
+            <h2>📱Contact us</h2>
+            <p>Galaxy Land Theme Park<br />
+                Stellar Way, Orbital Valley<br />
+                Lunarford, Kentonshire<br />
+                KT12 8ST<br />
+                United Kingdom<br />
+                
+                📧 Email: info@galaxylandpark.co.uk<br />
+                📞 Phone: +44 (0)1632 960570<br />
+                🕒 Opening Hours:<br />
+                Monday – Sunday: 9:00 AM – 8:00 PM<br />
+                📱 Social Media:<br />
+                Follow us @GalaxyLandPark on Instagram, Facebook & Twitter</p>
+            </p>
+    </div>
+
+    <div id="footer">
+      <p>&copy; Copyright Nadak</p>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const clock = document.getElementById('clock');
+    const themeSwitch = document.getElementById('themeSwitch');
+    const balloons = document.querySelectorAll('.balloon');
+    const planets = document.querySelectorAll('.planet');
+    const background = document.getElementById('background');
+
+    // Stars (night mode)
+    function addStars() {
+      for (let i = 0; i < 80; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.left = Math.random() * 100 + '%';
+        background.appendChild(star);
+      }
+    }
+
+    // Remove stars
+    function removeStars() {
+      document.querySelectorAll('.star').forEach(star => star.remove());
+    }
+
+    // Time display
+    function updateClock() {
+      const now = new Date();
+      clock.textContent = `Current Time: ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+    }
+
+    // Apply theme
+    function applyTheme(isNight) {
+      if (isNight) {
+        document.body.classList.remove('day');
+        document.body.classList.add('night');
+        balloons.forEach(b => b.style.display = 'none');
+        planets.forEach(p => p.style.display = 'block');
+        addStars();
+      } else {
+        document.body.classList.remove('night');
+        document.body.classList.add('day');
+        balloons.forEach(b => b.style.display = 'block');
+        planets.forEach(p => p.style.display = 'none');
+        removeStars();
+      }
+    }
+
+    // Initial time-based theme
+    const hour = new Date().getHours();
+    const isNightInitial = hour < 6 || hour >= 18;
+    themeSwitch.checked = isNightInitial;
+    applyTheme(isNightInitial);
+
+    // Toggle event
+    themeSwitch.addEventListener('change', () => {
+      applyTheme(themeSwitch.checked);
+    });
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
